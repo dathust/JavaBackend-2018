@@ -164,6 +164,8 @@ public class ChucNang {
                 }
             }
         }
+        
+        // tim ra thu nhap lon nhat trong tat ca nhan vien
         for (int i = 0; i < dsLuong.length; i++) {
             if (dsLuong[i] > luongMax) {
                 luongMax = dsLuong[i];
@@ -173,6 +175,7 @@ public class ChucNang {
         return luongMax;
     }
 
+    //Hien thi nhung nhan vien co thu nhap = thu nhap max
     private void hienThuNhapNhanVienTheoGioiTinh(int maGioiTinh) {
 
         float luongMax = timThuNhapLonNhatTheoGioiTinh(maGioiTinh);
@@ -210,6 +213,7 @@ public class ChucNang {
         float luongMax = 0;
         float luongTrungGian = 0;
 
+        // tim ra thu nhap lon nhat
         if (dsQuanLy != null) {
             for (QuanLy dsQuanLy1 : dsQuanLy) {
                 luongTrungGian = dsQuanLy1.tinhThuNhap();
@@ -217,6 +221,7 @@ public class ChucNang {
                     luongMax = luongTrungGian;
                 }
             }
+            //hien thi ra nhung nhan vien co thu nhap = thu nhap max
             for (QuanLy dsQuanLy1 : dsQuanLy) {
                 luongTrungGian = dsQuanLy1.tinhThuNhap();
                 if (dsQuanLy1.tinhThuNhap() == luongMax) {
