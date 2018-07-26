@@ -11,13 +11,13 @@ import java.util.Scanner;
  *
  * @author DatPT
  */
-public class NhanVien {
+public abstract class NhanVien {
 
     private int ma;
     private String ten;
     private GioiTinh gioiTinh;
     private float luong;
-    private float heSo;
+
     private static int maTrungGian = 0;
 
     public NhanVien() {
@@ -56,37 +56,15 @@ public class NhanVien {
     public void setLuong(float luong) {
         this.luong = luong;
     }
+    
+    public abstract void nhapThongTin();
 
-    public float getHeSo() {
-        return heSo;
-    }
-
-    public void setHeSo(float heSo) {
-        this.heSo = heSo;
-    }
-
-    public void nhapThongTin() {
-        System.out.print("\tNhap ten: ");
-        setTen(new Scanner(System.in).nextLine());
-        System.out.print("\tChon gioi tinh 1=>Nam, 0=>Nu,-1=>KXD: ");
-        int maGioiTinh = new Scanner(System.in).nextInt();
-        setGioiTinh(GioiTinh.layMaGioiTinh(maGioiTinh));
-        System.out.print("\tNhap luong: ");
-        setLuong(new Scanner(System.in).nextFloat());
-        System.out.print("\tNhap he so: ");
-        setHeSo(new Scanner(System.in).nextFloat());
-    }
-
-    public float tinhThuNhap() {
-        return this.luong + this.luong * this.heSo;
-    }
-
+    public abstract float tinhThuNhap();
+        
     public void hienThongTin() {
         System.out.println("\tMa: " + this.ma);
         System.out.println("\tTen: " + this.ten);
         System.out.println("\tGioi tinh: " + this.gioiTinh.getChu());
-        System.out.println("\tLuong: " + this.luong);
-        System.out.println("\tHe so: " + this.heSo);
-        System.out.println("\tThu nhap: " + this.tinhThuNhap());
+        System.out.println("\tLuong: " + this.luong);            
     }
 }

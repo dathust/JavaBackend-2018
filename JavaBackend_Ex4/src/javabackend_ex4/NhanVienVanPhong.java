@@ -11,16 +11,16 @@ import java.util.Scanner;
  *
  * @author DatPT
  */
-public class QuanLy  extends NhanVien{
+public class NhanVienVanPhong extends NhanVien {
 
-    private int soNhanVien;
-   
-    public int getSoNhanVien() {
-        return soNhanVien;
+    private float heSo;
+
+    public float getHeSo() {
+        return heSo;
     }
 
-    public void setSoNhanVien(int soNhanVien) {
-        this.soNhanVien = soNhanVien;
+    public void setHeSo(float heSo) {
+        this.heSo = heSo;
     }
 
     @Override
@@ -32,31 +32,19 @@ public class QuanLy  extends NhanVien{
         setGioiTinh(GioiTinh.layMaGioiTinh(maGioiTinh));
         System.out.print("\tNhap luong: ");
         setLuong(new Scanner(System.in).nextFloat());
-        System.out.print("\tNhap so nhan vien: ");
-        setSoNhanVien(new Scanner(System.in).nextInt());
+        System.out.print("\tNhap he so: ");
+        setHeSo(new Scanner(System.in).nextFloat());
     }
 
     @Override
     public float tinhThuNhap() {
-        int phuCap = 0;
-        if (this.soNhanVien < 10) {
-            phuCap = 500;
-        } else {
-            if (this.soNhanVien <= 20) {
-                phuCap = 1000;
-            } else {
-                phuCap = 2000;
-            }
-            
-        }
-        return this.getLuong() + phuCap;
+        return this.getLuong() + this.getLuong() * this.heSo;
     }
 
     @Override
     public void hienThongTin() {
         super.hienThongTin();
-        System.out.println("\tSoNhanVien: " + this.soNhanVien);
+        System.out.println("\tHe so: " + this.heSo);
         System.out.println("\tThu nhap: " + this.tinhThuNhap());
     }
-
 }
