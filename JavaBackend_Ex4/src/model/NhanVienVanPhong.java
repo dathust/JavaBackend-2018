@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javabackend_ex4;
+package model;
 
 import java.util.Scanner;
 
@@ -11,16 +11,16 @@ import java.util.Scanner;
  *
  * @author DatPT
  */
-public class CongNhan extends NhanVien {
+public class NhanVienVanPhong extends NhanVien implements INhanVien{
 
-    private int ngayCong;
+    private float heSo;
 
-    public int getNgayCong() {
-        return ngayCong;
+    public float getHeSo() {
+        return heSo;
     }
 
-    public void setNgayCong(int ngayCong) {
-        this.ngayCong = ngayCong;
+    public void setHeSo(float heSo) {
+        this.heSo = heSo;
     }
 
     @Override
@@ -32,19 +32,19 @@ public class CongNhan extends NhanVien {
         setGioiTinh(GioiTinh.layMaGioiTinh(maGioiTinh));
         System.out.print("\tNhap luong: ");
         setLuong(new Scanner(System.in).nextFloat());
-        System.out.print("\tNhap ngay cong: ");
-        setNgayCong(new Scanner(System.in).nextInt());
+        System.out.print("\tNhap he so: ");
+        setHeSo(new Scanner(System.in).nextFloat());
     }
 
     @Override
     public float tinhThuNhap() {
-        return this.getLuong() + this.getLuong() * (this.ngayCong / 26);
+        return this.getLuong() + this.getLuong() * this.heSo;
     }
 
     @Override
     public void hienThongTin() {
         super.hienThongTin();
-        System.out.println("\tNgay cong: " + this.ngayCong);
+        System.out.println("\tHe so: " + this.heSo);
         System.out.println("\tThu nhap: " + this.tinhThuNhap());
     }
 }

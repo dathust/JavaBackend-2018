@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javabackend_ex4;
+package model;
 
 import java.util.Scanner;
 
@@ -58,8 +58,6 @@ public abstract class NhanVien {
     }
     
     public abstract void nhapThongTin();
-
-    public abstract float tinhThuNhap();
         
     public void hienThongTin() {
         System.out.println("\tMa: " + this.ma);

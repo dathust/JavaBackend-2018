@@ -3,9 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javabackend_ex4;
+package view;
 
+import controller.IQuanLyNhanVien;
+import model.NhanVien;
 import java.util.Scanner;
+import model.GioiTinh;
+import controller.QuanLyNhanVien;
+import model.INhanVien;
 
 /**
  *
@@ -13,8 +18,8 @@ import java.util.Scanner;
  */
 public class Menu {
 
-    private QuanLyNhanVien quanLyNhanVien = new QuanLyNhanVien();
-    private NhanVien[] dsNhanvien = null;
+    private IQuanLyNhanVien iQuanLyNhanVien = new QuanLyNhanVien();
+    private INhanVien[] dsNhanvien = null;
 
     public void hienMenuChinh() {
 
@@ -28,28 +33,23 @@ public class Menu {
 
             switch (luaChon) {
                 case 1:
-                    System.out.print("Nhap so luong nhan vien: ");
-                    int tongNV = new Scanner(System.in).nextInt();
-                    dsNhanvien = new NhanVien[tongNV];
-                    // goi ham menu loai nhan vien
-                    for (int i = 0; i < dsNhanvien.length; i++) {
-                        int loaiNhanVien = loaiNhanVien();
-                        dsNhanvien[i] = quanLyNhanVien.taoNhanVien(loaiNhanVien);
-                        System.out.println("Nhap thong tin nhan vien thu " + i);
-                        quanLyNhanVien.nhapThongTinNhanVien(dsNhanvien[i]);
-                    }
+                    dsNhanvien = iQuanLyNhanVien.nhapDanhSachNhanVien();
 
                     break;
                 case 2:
+                    if (dsNhanvien == null) {
+                        System.out.println("chua chon 1");
+                        break;
+                    }
                     System.out.println("Danh sach nhan vien");
-                    quanLyNhanVien.hienThongTinNhanVien(dsNhanvien);
+                    iQuanLyNhanVien.hienThongTinNhanVien(dsNhanvien);
                     System.out.println("==================================");
                     break;
                 case 3:
                     System.out.println("\tLua chon tim kiem 1=>Gioi tinh, 2=>Vi tri");
                     int timKiem = new Scanner(System.in).nextInt();
-                    NhanVien[] dsTimKiem = loaiTimKiem(timKiem);
-                    quanLyNhanVien.hienThongTinNhanVien(dsTimKiem);
+                    INhanVien[] dsTimKiem = loaiTimKiem(timKiem);
+                    iQuanLyNhanVien.hienThongTinNhanVien(dsTimKiem);
                     System.out.println("==================================");
                     break;
                 case 4:
@@ -60,35 +60,19 @@ public class Menu {
         }
     }
 
-    public int loaiNhanVien() {
-        System.out.println("1. Quan ly");
-        System.out.println("2. Nhan vien van phong");
-        System.out.println("3. Cong nhan");
-        System.out.print("Chon kieu nhan vien can them: ");
-        int luaChon = new Scanner(System.in).nextInt();
-        if (luaChon < 1 || luaChon > 3) {
-            return loaiNhanVien();
-        }
-        return luaChon;
-    }
-
-    public NhanVien[] loaiTimKiem(int luaChon) {
+    private INhanVien[] loaiTimKiem(int luaChon) {
 
         switch (luaChon) {
             case 1:
                 System.out.print("\tChon gioi tinh 1=>Nam, 0=>Nu,-1=>KXD: ");
                 int maGioiTinh = new Scanner(System.in).nextInt();
-                return quanLyNhanVien.timThuNhapTheoGioiTinh(dsNhanvien, GioiTinh.layMaGioiTinh(maGioiTinh));
+                return iQuanLyNhanVien.timThuNhapTheoGioiTinh(dsNhanvien, GioiTinh.layMaGioiTinh(maGioiTinh));
             case 2:
                 System.out.print("\tChon vi tri 1=>Quan ly, 2=>Nhan vien,3=>Cong nhan: ");
                 int viTri = new Scanner(System.in).nextInt();
-                return quanLyNhanVien.timThuNhapTheoViTri(dsNhanvien, viTri);
+                return iQuanLyNhanVien.timThuNhapTheoViTri(dsNhanvien, viTri);
             default:
                 return null;
         }
-    }
-
-    public void timKiemTheoGioiTinh() {
-        System.out.println("1. ");
     }
 }

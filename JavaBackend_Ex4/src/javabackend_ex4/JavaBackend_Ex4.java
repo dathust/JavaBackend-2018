@@ -5,6 +5,7 @@
  */
 package javabackend_ex4;
 
+import view.Menu;
 import java.util.Scanner;
 
 /**

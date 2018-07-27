@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javabackend_ex4;
+package model;
 
 import java.util.Scanner;
 
@@ -11,10 +11,10 @@ import java.util.Scanner;
  *
  * @author DatPT
  */
-public class QuanLy  extends NhanVien{
+public class QuanLy extends NhanVien implements INhanVien {
 
     private int soNhanVien;
-   
+
     public int getSoNhanVien() {
         return soNhanVien;
     }
@@ -37,6 +37,13 @@ public class QuanLy  extends NhanVien{
     }
 
     @Override
+    public void hienThongTin() {
+        super.hienThongTin();
+        System.out.println("\tSoNhanVien: " + this.soNhanVien);
+        System.out.println("\tThu nhap: " + this.tinhThuNhap());
+    }
+
+    @Override
     public float tinhThuNhap() {
         int phuCap = 0;
         if (this.soNhanVien < 10) {
@@ -47,16 +54,8 @@ public class QuanLy  extends NhanVien{
             } else {
                 phuCap = 2000;
             }
-            
         }
         return this.getLuong() + phuCap;
-    }
-
-    @Override
-    public void hienThongTin() {
-        super.hienThongTin();
-        System.out.println("\tSoNhanVien: " + this.soNhanVien);
-        System.out.println("\tThu nhap: " + this.tinhThuNhap());
     }
 
 }
