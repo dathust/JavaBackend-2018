@@ -9,7 +9,7 @@ package dongboluong;
  *
  * @author DatPT
  */
-public class DuLieu {
+public class LuongDuLieu {
 
     private int a;
     private int b;
