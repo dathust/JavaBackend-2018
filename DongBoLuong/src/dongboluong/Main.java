@@ -36,15 +36,13 @@ public class Main {
             @Override
             public void run() {
                 synchronized (duLieu) {
-                    for (int i = 0; i < 100;) {
+                    for (;count < 100;) {
                         try {
                             if (duLieu.getLaCo() == 1) {
                                 int a = new Random().nextInt(100);
-                                System.out.println("A: " + a);
-                                //System.out.println("iA: " + i);
+                                System.out.println("A: " + a);                              
                                 duLieu.setA(a);
-                                Thread.sleep(8);
-                                i++;
+                                Thread.sleep(8);                              
                                 count++;
                                 duLieu.setLaCo(2);
                                 duLieu.notifyAll();
